@@ -27,6 +27,10 @@ result_data_H_A=[]
 result_data_H_A.extend(home_data)
 result_data_H_A.extend(away_data)
 
+#最後にカラムを入れ替えてモデル作成の時にやりやすくする
+for i in range(len(result_data_H_A)):
+    result_data_H_A[i][6],result_data_H_A[i][7]=result_data_H_A[i][7],result_data_H_A[i][6]
+
 #ソートする
 result_data_H_A=sorted(result_data_H_A,key=lambda x:(x[1],x[3],x[4]), reverse=True)
 
@@ -34,5 +38,15 @@ result_data_H_A=sorted(result_data_H_A,key=lambda x:(x[1],x[3],x[4]), reverse=Tr
 with open('result_data_H_A.csv', 'w') as f:
     writer = csv.writer(f)
     writer.writerows(result_data_H_A)
+
+#ホーム目線データ
+with open('result_data_H.csv', 'w') as f:
+    writer = csv.writer(f)
+    writer.writerows(home_data)
+
+#アウェイ目線データ
+with open('result_data_A.csv', 'w') as f:
+    writer = csv.writer(f)
+    writer.writerows(away_data)
     
 
