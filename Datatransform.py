@@ -20,6 +20,22 @@ i=0
 for i in range(len(away_data)):
     away_data[i][5],away_data[i][6]=home_data[i][7],home_data[i][8]
     away_data[i][7],away_data[i][8]=home_data[i][5],home_data[i][6]
+    
+    #末尾に空のカラムがあったので消す
+    home_data[i]=home_data[i][:-1]
+    away_data[i]=away_data[i][:-1]
+
+
+    #勝敗カラムを追加
+    if home_data[i][6]>home_data[i][8]:
+        home_data[i].append("win")
+        away_data[i].append("lose")
+    elif home_data[i][6]<home_data[i][8]:
+        home_data[i].append("lose")
+        away_data[i].append("win")
+    else:
+        home_data[i].append("draw")
+        away_data[i].append("draw")
 
 result_data_H_A=[]
 
