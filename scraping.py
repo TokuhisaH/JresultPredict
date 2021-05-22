@@ -8,8 +8,11 @@ import pprint
 competition_years=[]
 
 #Jリーグ開幕から28年の28
-y=1993
-for i in range(29):
+y=2010
+#何年分持ってくるか
+seasons = 5
+
+for i in range(int(seasons)):
     competition_years.append(str(y+i))
 
 competition_frame_ids=1
@@ -45,7 +48,7 @@ for i in range(len(competition_years)):
             row.insert(8,match_score[1])
             print(row)
         except IndexError:
-            print(row)
+            print("scraping finish")
             break
         results_data.append(row)
 
@@ -54,4 +57,4 @@ with open('result_data.csv', 'w') as f:
     writer = csv.writer(f)
     writer.writerows(results_data)
 
-print("complete!")
+print("Scraping Complete!")

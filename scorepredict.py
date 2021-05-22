@@ -1,6 +1,15 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
+import csv
+
+#チーム情報読み込み
+match_card=[]
+with open('import_data.csv') as f:
+    reader = csv.reader(f)
+    for row in reader:
+        match_card.extend(row)
+        
 
 dataset_home = pd.read_csv('result_data_H.csv',header=None,encoding="shift-jis")
 #ホームのクラブがどのクラブに対して何点取るか、という予想をするモデル
@@ -36,9 +45,11 @@ regressor_away.fit(X_away,Y_away)
 print("learning clear")
 
 #予想したい対戦カード
-home_card=[[2021,"川崎Ｆ","FC東京"]]
+home_card=[[2021,str(match_card[0]),str(match_card[1])]]
 away_card=[[home_card[0][0],home_card[0][2],home_card[0][1]]]
 
 #予想スコア
 home_score_predict=regressor_home.predict(cd.transform(home_card))
 away_score_predict=regressor_away.predict(cd.transform(away_card))
+
+print("Score Predict Complete!")

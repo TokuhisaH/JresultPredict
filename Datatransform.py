@@ -64,5 +64,7 @@ with open('result_data_H.csv', 'w') as f:
 with open('result_data_A.csv', 'w') as f:
     writer = csv.writer(f)
     writer.writerows(away_data)
+
+print("Data Transform Complete!")
     
 
