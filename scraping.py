@@ -8,9 +8,9 @@ import pprint
 competition_years=[]
 
 #Jリーグ開幕から28年の28
-y=2010
+y=2015
 #何年分持ってくるか
-seasons = 5
+seasons = 6
 
 for i in range(int(seasons)):
     competition_years.append(str(y+i))

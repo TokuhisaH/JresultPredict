@@ -42,13 +42,13 @@ Predict_card=cd.transform(scorepredict.home_card)
 print(transformer_Y.inverse_transform(classifier.predict(Predict_card.toarray())))
 
 #テストデータでモデルの精度評価
-Y_pred = (classifier.predict(X_home_test))
-Y_pred=transformer_Y.inverse_transform(Y_pred)
-Y_home_test=transformer_Y.inverse_transform(Y_home_test)
-print(np.concatenate((Y_pred.reshape(len(Y_pred),1), Y_home_test.reshape(len(Y_home_test),1)),1))
+# Y_pred = (classifier.predict(X_home_test))
+# Y_pred=transformer_Y.inverse_transform(Y_pred)
+# Y_home_test=transformer_Y.inverse_transform(Y_home_test)
+# print(np.concatenate((Y_pred.reshape(len(Y_pred),1), Y_home_test.reshape(len(Y_home_test),1)),1))
 
-#混同行列の作成
-from sklearn.metrics import confusion_matrix, accuracy_score
-cm = confusion_matrix(Y_home_test, Y_pred)
-print(cm)
-accuracy_score(Y_home_test, Y_pred)
+# #混同行列の作成
+# from sklearn.metrics import confusion_matrix, accuracy_score
+# cm = confusion_matrix(Y_home_test, Y_pred)
+# print(cm)
+# accuracy_score(Y_home_test, Y_pred)

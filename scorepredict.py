@@ -5,11 +5,10 @@ import csv
 
 #チーム情報読み込み
 match_card=[]
-with open('import_data.csv') as f:
+with open('match_card.csv') as f:
     reader = csv.reader(f)
     for row in reader:
         match_card.extend(row)
-        
 
 dataset_home = pd.read_csv('result_data_H.csv',header=None,encoding="shift-jis")
 #ホームのクラブがどのクラブに対して何点取るか、という予想をするモデル
@@ -45,11 +44,17 @@ regressor_away.fit(X_away,Y_away)
 print("learning clear")
 
 #予想したい対戦カード
-home_card=[[2021,str(match_card[0]),str(match_card[1])]]
+home_card=[[2021,match_card[0],match_card[1]]]
+print(home_card)
 away_card=[[home_card[0][0],home_card[0][2],home_card[0][1]]]
 
 #予想スコア
 home_score_predict=regressor_home.predict(cd.transform(home_card))
 away_score_predict=regressor_away.predict(cd.transform(away_card))
+
+#データアウトプット
+with open('score_predict.csv', 'w',newline='') as f:
+    writer = csv.writer(f,lineterminator=',')
+    writer.writerows([["2021"],[match_card[0]],[match_card[1]],home_score_predict,away_score_predict])
 
 print("Score Predict Complete!")

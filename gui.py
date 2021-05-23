@@ -9,7 +9,7 @@ import csv
 OptionList = [
 "浦和",
 "名古屋",
-"FC東京",
+"Ｆ東京",
 "Ｇ大阪"
 ] 
 
@@ -45,8 +45,8 @@ def setCard():
     match_card=[[hometeam],[awayteam]]
     # combo.get()
     print(match_card)
-    with open('import_data.csv', 'w') as f:
-        writer = csv.writer(f,lineterminator='\n')
+    with open('match_card.csv', 'w',newline='') as f:
+        writer = csv.writer(f,lineterminator=',')
         writer.writerows(match_card)
 
 
@@ -57,11 +57,11 @@ def scraping():
 # def datatransform():
 #     subprocess.Popen(r'C:\Users\tokuh\Documents\Products\JresultPredict\DataTransform.py')
 
-def scorepredict():
-    subprocess.Popen(r'python scorepredict.py')
+# def scorepredict():
+#     subprocess.Popen(r'python scorepredict.py')
 
 def resultpredict():
-    subprocess.Popen(r'C:\Users\tokuh\Documents\Products\JresultPredict\resultpredict.py')
+    subprocess.Popen(r'python resultpredict.py')
 
 def finish_menu():
     sys.exit()
@@ -90,8 +90,8 @@ scraping_Button.pack()
 # スコア予想
 Label_Blanc = tk.Label(root, text=u'')
 Label_Blanc.pack()
-scorepredict_Button = tk.Button(root, text=u'スコア予想', width=10)
-scorepredict_Button["command"] = scorepredict
+scorepredict_Button = tk.Button(root, text=u'スコア&勝敗予想', width=15)
+scorepredict_Button["command"] = resultpredict
 scorepredict_Button.pack()
 
 # # 結果予想
